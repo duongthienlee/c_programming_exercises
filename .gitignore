@@ -1,0 +1,17 @@
+*.dSYM
+*~
+*/*~
+.*.swp
+.*.swo
+*.so
+*.o
+*.nomain.c
+main
+main.exe
+.DS_Store
+**/test/test
+**/test/test.exe
+valgrind.log
+report.json
+filter.log
+random.bin
