@@ -1,7 +1,7 @@
 #Basic Course in C programming.
 
-All the text below here is from Aalto university.
-I pasted some topics that I found important to remember for quick reference purpose.
+Some of the texts below here are quoted from Aalto university.
+I rewrite some of them to make it easy for me to understand and remember.
 
 ### Pointers
 A pointer takes 4 bytes from the memory.
@@ -58,4 +58,70 @@ the value to a string contain zero digit. i.e. '0'.
 char c;
 scanf("%c", &c);  // read one ASCII-character
 int num = c - '0';   // convert it to the corresponding number
+```
+### Pointers usage with array (Address arithmetics)
+We can assign the start of the array to a pointer
+```
+#include <stdio.h>
+
+int main(void)
+{
+    int array[50];  // reserve space for 50 integers
+    int *intPtr = array;  // assign the start of the array to a pointer
+    int i = 50;
+    while (i > 0) {
+        *intPtr = i * 2;  // write i*2 to the location indicated by the pointer
+        intPtr++;  // move the pointer to the next element
+        i--;
+    }
+
+    intPtr = array;  // move the pointer back to the beginning of the array
+
+    for (i = 0; i < 50; i++) {
+        int value = *(intPtr + i);  // retrieve the i:th element in the array
+        printf("%d ", value);
+    }
+}
+```
+### Arrays
+```
+/* Initialize array without declaration but specify the size of 4 elements aka 4 memory slots.
+ * The system allocate enough memory ( 4 short int = 2 bytes * 4) for 4 short data type elements.
+ */
+short slots[4]; 
+
+/* Initialize array with declaration but no need to specify the size memory slots.
+ */
+int slots[] = { 12 ,3 ,4 ,15}; 
+
+/*
+ *If initialization list is shorter than the explicitly given array length, the unspecified values are *initialized to 0. This is true only if the initialization list contains at least one element.
+ */
+ int table[1000] = { 0 };
+```
+Assign value to a slot of an array by using array notation 
+**`slots[index] = 10`**
+
+To access the value, we can either use the above array notation or [pointer arithmetics](#pointers-usage-with-array-address-arithmetics). i.e. 
+**`slots[index]`** or **`*(slots + index)`**
+
+***Notice***: `*** stack smashing detected ***: <unknown> terminated` is an error message indicates
+the access index is not within the array bounds. For example: array size if 5, but the access
+index is also 5.
+```
+short slots[4] = {0};
+slots{4} // throw mentioned above error.
+```
+
+### Arrays in function
+>Arrays can be passed as function arguments, but the array operator is usually not used in that case. Arrays are rather passed using a pointer type, where the pointer refers to the first element in array. The length of the array cannot be read from the function parameter, but it needs to be indicated by some other means. Here are some solutions:
+>* Pass the length as another function parameter which tells directly how many elements are in the array
+>* Indicate the end of an array by some special value after the last element. In this latter case the allocated length of the array needs to have extra space for the end marker.
+>* If the data type of the array is integer, its size can be told in the first element of the of the array (data communication protocols are designed like this).
+>* etc…
+
+The third way can be illustrated in the following example:
+```
+long array[30] = { 3, 6, 12, 24};
+int sizeOfArr = sizeof(array)/sizeof(long);
 ```
