@@ -95,7 +95,9 @@ short slots[4];
 int slots[] = { 12 ,3 ,4 ,15}; 
 
 /*
- *If initialization list is shorter than the explicitly given array length, the unspecified values are *initialized to 0. This is true only if the initialization list contains at least one element.
+ * If initialization list is shorter than the explicitly given array length, 
+ * the unspecified values are *initialized to 0. This is true only if the
+ * initialization list contains at least one element.
  */
  int table[1000] = { 0 };
 ```
