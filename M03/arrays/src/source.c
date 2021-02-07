@@ -8,7 +8,12 @@
  */
 int array_sum(int *array, int count)
 {
-    
+    int sum = 0;
+    for (int i = 0; i < count; i++)
+    {
+        sum += *(array + i);
+    }
+    return sum;
 }
 
 /* Array Reader */
@@ -18,5 +23,16 @@ int array_sum(int *array, int count)
  * returns: number of values read */
 unsigned int array_reader(int *vals, int n)
 {
-    
+    int read_count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int input;
+        int ret = scanf("%d", &input);
+        if (ret > 0)
+        {
+            vals[i] = input;
+            read_count++;
+        }
+    }
+    return read_count;
 }
