@@ -1,7 +1,7 @@
-#A free course Basic Course in C programming.
+#Basic Course in C programming.
 
 All the text below here is from Aalto university.
-I pasted some topics that I found important to remember here for quick reference.
+I pasted some topics that I found important to remember for quick reference purpose.
 
 ### Pointers
 A pointer takes 4 bytes from the memory.
