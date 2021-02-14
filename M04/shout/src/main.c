@@ -9,9 +9,9 @@ int main(void)
     /* The following helps detecting string errors, e.g. missing final nil */
     memset(dest, '#', 199);
     dest[199] = 0;
-    
+   
     printf("%s",
-    	my_toupper(dest, "Otatko makkaraa? Se maksaa kaksi euroa. Ole hyvä.\n"));
+    	my_toupper(dest, "Would you like to have a sausage? It will be two euros. Here you are.\n"));
 
     printf("%s",
     	my_toupper(dest, "Madam, where are you going? The health care center is over there.\n"));
