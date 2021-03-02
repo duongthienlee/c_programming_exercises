@@ -28,7 +28,7 @@ int main(void)
     free(a1.title);
     free(a1.author);
     
-    struct book collection[] = {
+   struct book collection[] = {
         { "001020304", "Harry Potter and the Chamber of Secrets", "J. K. Rowling", {2,7,1998} },
         { "555566666", "Harry Potter and the Prisoner of Azkaban", "J. K. Rowling", {8,7,1999} },
         { "773466889", "Harry Potter and the Goblet of Fire", "J. K. Rowling", {8, 7, 2000} },
