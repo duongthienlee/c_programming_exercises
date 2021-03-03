@@ -13,6 +13,8 @@ int main()
     
     Fraction *a = setFraction(2,3);
     Fraction *b = setFraction(3,4);
+    printFraction(a);
+    printFraction(b);
     
     Fraction *sum = addFraction(a, b);
     printFraction(sum);

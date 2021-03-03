@@ -4,7 +4,9 @@
 typedef struct fraction_st Fraction;
 
 // Implement the structure here
-
+struct fraction_st {
+    unsigned int numerator, denominator;
+};
 
 /* Allocates a new Fraction from heap */
 Fraction* setFraction(unsigned int numerator, unsigned int denominator);
