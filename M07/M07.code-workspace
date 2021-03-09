@@ -1,13 +1,17 @@
 {
 	"folders": [
 		{
+			"name": "7.3: Dynamic multidimensional array",
+			"path": "dynaAllocTwoDimArr"
+		},
+		{
 			"name": "7.4: Split String",
 			"path": "strsplit"
 		},
 		{
 			"name": "7.5: Game of Life",
 			"path": "gameoflife"
-		}
+		},
 	],
 	"settings": {
 		"files.associations": {
