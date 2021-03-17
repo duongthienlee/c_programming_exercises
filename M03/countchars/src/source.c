@@ -15,17 +15,39 @@ unsigned int arraylen(const char *array)
 
 void countchars(const char *array, unsigned int *counts)
 {
-    int len = arraylen(array);
-    for (int i = 0; i < len; i++)
+    unsigned int len = arraylen(array);
+    for (unsigned int i = 0; i < len; i++)
     {
-        char ele = array[i];
-        for (int n = 'a'; n <= 'z'; n++)
-        {
-            char letter = (char)n; // convert to char
-            if (ele == letter)
-            {
-                counts[n] = *(counts + n) + 1;
-            }
-        }
+        // The solution below does the exact same thing
+        // as this commented code:
+
+        char character = array[i];
+        int index = (int)character;
+        counts[index]++;
+
+        /*  counts[(int)array[i]]++; */
     }
 }
+
+//Aalto's answer
+/* unsigned int arraylen(const char* array) {
+    unsigned int n = 0;
+    for( ; array[n]; n++);
+    return n;
+}
+
+void countchars(const char *array, unsigned int *counts)
+{
+    for (unsigned int i = 0; i < arraylen(array); i++)
+    {
+        // The solution below does the exact same thing
+        // as this commented code:
+
+        // char character = array[i];
+        // int index = (int)character;
+        // counts[index]++;
+
+         counts[(int)array[i]]++;
+    }
+}
+ */

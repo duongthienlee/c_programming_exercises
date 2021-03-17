@@ -59,7 +59,9 @@
 			"stdexcept": "cpp",
 			"streambuf": "cpp",
 			"typeinfo": "cpp",
-			"variant": "cpp"
+			"variant": "cpp",
+			"stringsplit.h": "c",
+			"stdio.h": "c"
 		}
 	}
 }

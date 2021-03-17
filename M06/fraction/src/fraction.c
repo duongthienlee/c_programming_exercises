@@ -1,7 +1,6 @@
 #include "fraction.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <assert.h>
 
 /* Algorithm for determining greatest common divisor, needed in (d) */
 /* The function returns gcd between the two parameters, u and v */
@@ -61,7 +60,6 @@ unsigned int getDenom(const Fraction *f)
 
 void freeFraction(Fraction *f)
 {
-    assert(f); // fails if v is NULL
     free(f);
 }
 
@@ -85,6 +83,21 @@ int compFraction(const Fraction *a, const Fraction *b)
         return 1;
     return -1;
 }
+
+/* 
+// Aalto's answer
+int compFraction(const Fraction* a, const Fraction* b) {
+    float af = (float)a->numerator/a->denominator;
+    float bf = (float)b->numerator/b->denominator;
+
+    if(af < bf)
+        return -1;
+    else if(af > bf)
+        return 1;
+    else
+        return 0;
+}
+ */
 
 /* Exercise c: Add values
  * Parameters: two fractions to be added

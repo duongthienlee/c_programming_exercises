@@ -17,3 +17,17 @@ int num_substr(const char *str, const char *sub)
     }
     return count;
 }
+
+/* 
+// Aalto's answer
+int num_substr(const char* str, const char* sub) {
+    int c = 0;
+    while((str = strstr(str, sub)) != NULL) {
+        c++;
+        str++;
+    }
+
+    return c;
+
+}
+ */

@@ -16,3 +16,15 @@ int count_isalpha(const char *str)
     }
     return count;
 }
+
+/* 
+// Aalto's answer
+int count_isalpha(const char* str) {
+    int n=0;
+    for(int i=0; str[i]; i++)
+        if(isalpha(str[i]))
+            n++;
+
+    return n;
+}
+ */

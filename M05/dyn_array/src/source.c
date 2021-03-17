@@ -41,3 +41,28 @@ int *add_dyn_array(int *arr, unsigned int num, int newval)
     free(newArr);
     return NULL;
 }
+
+/* 
+// Aalto's answer
+int* create_dyn_array(unsigned int n) {
+    int* array = malloc(n * sizeof(int));
+
+    for(int i=0; n > 0; i++) {
+        int ret = scanf("%d", &array[i]);
+        
+        if(ret != 1) {
+            printf("Reading failed!\n");
+            return array;
+        }
+        n--;
+    }
+
+    return array;
+}
+
+int* add_dyn_array(int* arr, unsigned int num, int newval) {
+    arr = realloc(arr, (num + 1) * sizeof(int));
+    arr[num] = newval;
+    return arr;
+}
+ */

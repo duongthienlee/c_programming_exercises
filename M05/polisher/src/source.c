@@ -61,3 +61,32 @@ char *delete_comments(char *input)
     input = remove_multi_line_comments(input);
     return input;
 }
+
+
+/* 
+// Aalto's answer
+
+char* delete_comments(char* input) {
+    char* output = malloc(strlen(input)+1);
+    int j = 0;
+    for(unsigned int i=0; i<strlen(input); i++) {
+        if(input[i] == '/' && input[i+1] == '/') {
+            while(input[i] != '\n')
+                i++;
+        } else if(input[i] == '/' && input[i+1] == '*') {
+            while(input[i] != '*' || input[i+1] != '/') 
+                i++;
+            i++;
+        } else {
+            output[j] = input[i];
+            j++;
+        }
+    }
+
+    output[j] = 0;
+
+    free(input);
+
+    return output;
+}
+ */

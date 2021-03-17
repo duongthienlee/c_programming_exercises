@@ -3,59 +3,13 @@
 #include <string.h>
 #include <stddef.h>
 
-/* Remove all hash occurrences in string */
-/* Parameters:
- * str: string to be handled 
- * startFrom: start index to traverse
- * */
-void removeHashStartFrom(char *str, const int startFrom)
-{
-    for (int i = startFrom; str[i] != '\0'; i++)
-    {
-        for (int j = i; str[j] != '\0'; j++)
-        {
-            str[j] = str[j + 1];
-        }
-        // Since a character is removed, i shouldn't be incremented
-        i--;
-    };
-}
-
-/* Get length of string until the first occurrence of provided character */
-/* Parameters:
- * s: string to be looked in
- * c: char thats end the count
- * Returns: string length.*/
-unsigned int getLenUntilChar(const char *s, const char c)
-{
-    int count = 0;
-    while (*s)
-    {
-        if (*s == c)
-            break;
-        count++;
-        s++;
-    }
-    return count;
-}
-
 /* Print string */
 /* Parameters:
  * s: string to be printed */
 void qstr_print(const char *s)
 {
-    int strLen = getLenUntilChar(s, '?');
-
-    char result[200];
-    memset(result, '#', 199);
-    result[199] = 0;
-
-    for (int i = 0; i < strLen; i++)
-        result[i] = s[i];
-
-    removeHashStartFrom(result, strLen);
-
-    printf("%s", result);
+    for (int i = 0; s[i] != '?'; i++)
+        printf("%c", s[i]);
 }
 
 /* String length */
@@ -64,7 +18,10 @@ void qstr_print(const char *s)
  * Returns: length of the string */
 unsigned int qstr_length(const char *s)
 {
-    return getLenUntilChar(s, '?');
+    int n = 0;
+    for (; s[n] != '?'; n++)
+        ;
+    return n;
 }
 
 /* String cat */
@@ -74,19 +31,16 @@ unsigned int qstr_length(const char *s)
  * Returns: Number of characters in the new string */
 int qstr_cat(char *dst, const char *src)
 {
-    int dstLen = qstr_length(dst);
-    int srcLen = qstr_length(src);
+    int i = 0;
+    for (; dst[i] != '?'; i++)
+        ;
 
-    for (int i = 0; i <= srcLen; i++)
+    for (unsigned int j = 0; j <= qstr_length(src); j++, i++)
     {
-        char charOfSrc = src[i];
-
-        dst[dstLen] = charOfSrc;
-        if (charOfSrc != '?')
-            dstLen++;
+        dst[i] = src[j];
     }
 
-    return dstLen;
+    return qstr_length(dst);
 }
 
 /* String strstr */
@@ -117,3 +71,25 @@ const char *qstr_strstr(const char *str1, const char *str2)
     }
     return NULL;
 }
+
+/* 
+// Aalto's answer
+const char* qstr_strstr(const char* str1, const char* str2) {
+    for(unsigned int i=0; i<qstr_length(str1); i++) {
+        if(str1[i] == str2[0]) { // First character match
+            for(int j=i, k=0; str1[j]==str2[k]; ) {
+                k++;
+                j++;
+
+                if(str2[k] == '?') {
+                    // Found substring!
+                    return &str1[i];
+                }
+            }
+        }
+    }
+
+    return NULL;
+}
+
+ */
